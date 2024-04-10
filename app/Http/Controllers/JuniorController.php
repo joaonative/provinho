@@ -54,5 +54,32 @@ class JuniorController extends Controller
             return response()->json(['error' => $e->getMessage()], 400);
         }
     }
+
+    public function calcTaxes(Request $request, $name, int $salaryPerHour, int $regNumber)
+    {
+        $workedHours = $request->query('workedHours');
+
+        
+        try {
+            $junior = new Junior($name, $salaryPerHour, $regNumber, $workedHours);
+
+            $data = [
+                'name' => $junior->getName(),
+                'regNumber' => $junior->getRegNumber(),
+                'type' => 'Junior',
+                'salary' => $junior->getSalary(),
+                'workedHours' => $junior->getWorkedHours(),
+                'totalSalary' => $junior->getSalary() * $junior->getWorkedHours(),
+                'taxes' => $junior->getSalary() / 0.11,
+            ];
+
+            $junior->calcTaxes();
+            $data['liquid'] = $junior->getSalary() * $junior->getWorkedHours();
+            
+            return view('junior.taxes', compact('data'));
+        } catch (\InvalidArgumentException $e) {
+            return response()->json(['error' => $e->getMessage()], 400);
+        }
+    }
 }
 

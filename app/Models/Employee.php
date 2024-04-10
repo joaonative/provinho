@@ -18,11 +18,21 @@ abstract class Employee extends Model implements IEmployee //implementar a inter
     }
 
     public function calcTaxes(): float {
-        $taxes = 0.11;
-        $inss =  0.08;
-        $syndicate = 0.05;
-
-        return ($this->salary * ($taxes + $inss + $syndicate));
+        $taxRate = 0.11;
+        $inssRate = 0.08;
+        $syndicateRate = 0.05;
+    
+        $taxes = $this->salary * $taxRate;
+        $inss = $this->salary * $inssRate;
+        $syndicate = $this->salary * $syndicateRate;
+    
+        $totalTax = $taxes + $inss + $syndicate;
+    
+        $newSalary = $this->salary - $totalTax;
+    
+        $this->setSalary($newSalary);
+    
+        return $newSalary;
     }
 
     public function getName() {

@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Models;
+
 use App\Models\Employee;
 
 class Senior extends Employee
