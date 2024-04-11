@@ -11,6 +11,10 @@ class FullController extends Controller
     {
         $workedHours = $request->query('workedHours');
 
+        if (!is_numeric(workedHours)) {
+            return response()->json(['error' => 'Horas trabalhadas somente em valor numérico'], 400);
+        }
+
         try{
             $full = new Full($name, $salaryPerHour, $regNumber, $workedHours);
 
@@ -57,6 +61,10 @@ class FullController extends Controller
     public function calcTaxes(Request $request, $name, int $salaryPerHour, int $regNumber)
     {
         $workedHours = $request->query('workedHours');
+        
+        if (!is_numeric(workedHours)) {
+            return response()->json(['error' => 'Horas trabalhadas somente em valor numérico'], 400);
+        }
 
         
         try {
@@ -86,6 +94,10 @@ class FullController extends Controller
     public function upCalcTaxes(Request $request, $name, int $salaryPerHour, int $regNumber)
     {
         $workedHours = $request->query('workedHours');
+        
+        if (!is_numeric(workedHours)) {
+            return response()->json(['error' => 'Horas trabalhadas somente em valor numérico'], 400);
+        }
 
         
         try {

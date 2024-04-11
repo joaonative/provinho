@@ -11,6 +11,10 @@ class SeniorController extends Controller
     {
         {
             $workedHours = $request->query('workedHours');
+        
+        if (!is_numeric(workedHours)) {
+            return response()->json(['error' => 'Horas trabalhadas somente em valor numérico'], 400);
+        }
     
             try {
                 $senior = new Senior($name, $salaryPerHour, $regNumber, $workedHours);
@@ -33,6 +37,10 @@ class SeniorController extends Controller
     public function incrSalary(Request $request, $name, int $salaryPerHour, int $regNumber)
     {
         $workedHours = $request->query('workedHours');
+        
+        if (!is_numeric(workedHours)) {
+            return response()->json(['error' => 'Horas trabalhadas somente em valor numérico'], 400);
+        }
 
         try {
             $senior = new Senior($name, $salaryPerHour, $regNumber, $workedHours);
@@ -59,6 +67,10 @@ class SeniorController extends Controller
     public function calcTaxes(Request $request, $name, int $salaryPerHour, int $regNumber)
     {
         $workedHours = $request->query('workedHours');
+        
+        if (!is_numeric(workedHours)) {
+            return response()->json(['error' => 'Horas trabalhadas somente em valor numérico'], 400);
+        }
 
         
         try {
@@ -88,6 +100,10 @@ class SeniorController extends Controller
     public function upCalcTaxes(Request $request, $name, int $salaryPerHour, int $regNumber)
     {
         $workedHours = $request->query('workedHours');
+        
+        if (!is_numeric(workedHours)) {
+            return response()->json(['error' => 'Horas trabalhadas somente em valor numérico'], 400);
+        }
 
         
         try {
