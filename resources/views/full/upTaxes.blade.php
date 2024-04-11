@@ -7,6 +7,9 @@
             <p>Cargo: {{ $data['type'] }}</p>
             <p>Salário por hora trabalhada: {{ $data['salary'] }}</p>
             <p>Horas trabalhadas no mês: {{ $data['workedHours'] }}</p>
+            <p>Salário total do mês: {{ $data['totalSalary'] }}</p>
+            <p>Porcentagem de aumento no salário: {{ $data['incrPercentage'] }}%</p>
+            <p>Salário total do mês com aumento: {{ $data['incrSalary'] }}</p>
             <p>Imposto de Renda: {{ $data['taxes'] }}</p>
             <p>INSS: {{ $data['inss']}}</p>
             <p>Sindicato: {{ $data['syndicate']}}</p>
