@@ -11,7 +11,7 @@ class FullController extends Controller
     {
         $workedHours = $request->query('workedHours');
 
-        if (!is_numeric(workedHours)) {
+        if (!is_numeric($workedHours)) {
             return response()->json(['error' => 'Horas trabalhadas somente em valor numérico'], 400);
         }
 
@@ -62,7 +62,7 @@ class FullController extends Controller
     {
         $workedHours = $request->query('workedHours');
         
-        if (!is_numeric(workedHours)) {
+        if (!is_numeric($workedHours)) {
             return response()->json(['error' => 'Horas trabalhadas somente em valor numérico'], 400);
         }
 
@@ -95,7 +95,7 @@ class FullController extends Controller
     {
         $workedHours = $request->query('workedHours');
         
-        if (!is_numeric(workedHours)) {
+        if (!is_numeric($workedHours)) {
             return response()->json(['error' => 'Horas trabalhadas somente em valor numérico'], 400);
         }
 
